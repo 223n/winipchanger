@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinIPChanger", "WinIpChange
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinIPChangerConsole", "WinIpChangerConsole\WinIPChangerConsole.csproj", "{9FAA090F-4904-4173-9D59-18A3A97D627F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinIPChangerDesktop", "WinIPChargerDesktop\WinIPChangerDesktop.csproj", "{AA69FD0C-80D0-44E7-9BDA-E26B1A3EDC8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9FAA090F-4904-4173-9D59-18A3A97D627F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FAA090F-4904-4173-9D59-18A3A97D627F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FAA090F-4904-4173-9D59-18A3A97D627F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA69FD0C-80D0-44E7-9BDA-E26B1A3EDC8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA69FD0C-80D0-44E7-9BDA-E26B1A3EDC8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA69FD0C-80D0-44E7-9BDA-E26B1A3EDC8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA69FD0C-80D0-44E7-9BDA-E26B1A3EDC8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
