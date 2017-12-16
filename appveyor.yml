@@ -33,16 +33,18 @@ before_build:
 
 after_build:
   - ps: |
-      $binDir = 'src\WinIpChanger\WinIPChargerDesktop\bin';
+      $binDir = '.\src\WinIpChanger\WinIPChargerDesktop\bin';
+      cd $binDir
+      ls
       $debugZipName = 'WinIPChargerDesktop_{version}_Debug';
       $releaseZipName = 'WinIPChargerDesktop_{version}';
-      Rename-Item '${binDir}\Debug' ${debugZipName};
-      Rename-Item '${binDir}\Release' ${releaseZipName};
-      Compress-Archive -Path $debugZipName -DestinationPath '.\${debugZipName}.zip';
-      Compress-Archive -Path $releaseZipName -DestinationPath '.\${debugZipName}.zip';
+      Rename-Item Debug $debugZipName;
+      Rename-Item Release $releaseZipName;
+      Compress-Archive -Path $debugZipName -DestinationPath '${debugZipName}.zip';
+      Compress-Archive -Path $releaseZipName -DestinationPath '${debugZipName}.zip';
 
 test_script:
   - ps: ls
 
 artifacts:
-  - path: '.\*.zip'
+  - path: '.\src\WinIpChanger\WinIPChargerDesktop\bin\*.zip'
