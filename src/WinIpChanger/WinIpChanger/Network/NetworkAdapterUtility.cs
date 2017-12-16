@@ -15,7 +15,7 @@ namespace WinIPChanger.Network
         /// <summary>
         /// WMI APIが最後に返却したエラーコード
         /// </summary>
-        [CLSCompliantAttribute(false)]
+        [CLSCompliant(false)]
         public static uint LastApiErrorCode { get; set; } = 0;
 
         /// <summary>
@@ -41,9 +41,10 @@ namespace WinIPChanger.Network
         /// ネットワークアダプタの設定を反映します。
         /// </summary>
         /// <param name="value">ネットワークアダプタの設定</param>
+        /// <param name="firstEnableDHCP">最初にDHCPの有効化を実行するかどうか</param>
         /// <returns>設定結果</returns>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public static Results SetAdapterConfig(NetworkAdapter value)
+        public static Results SetAdapterConfig(NetworkAdapter value, bool firstEnableDHCP)
         {
             if (value == null) throw new ArgumentNullException("value");
             uint apiResult = 0;
@@ -58,14 +59,16 @@ namespace WinIPChanger.Network
                         {
                             isFound = true;
                             if (!(bool)config["IPEnabled"]) return Results.TargetIsNotEnableIPError;
-                            // Enable DHCP
-                            apiResult |= (uint)config.InvokeMethod("EnableDHCP", null);
-                            if (apiResult != 0 && apiResult != 1)
-                            {
-                                LastApiErrorCode = apiResult;
-                                return Results.ApiFailedError;
-                            }
                             // Static
+                            if (value.IsDhcpEnabled || firstEnableDHCP)
+                            {
+                                apiResult |= (uint)config.InvokeMethod("EnableDHCP", null);
+                                if (apiResult != 0 && apiResult != 1)
+                                {
+                                    LastApiErrorCode = apiResult;
+                                    return Results.ApiFailedError;
+                                }
+                            }
                             if (!value.IsDhcpEnabled)
                             {
                                 apiResult |= (uint)config.InvokeMethod("EnableStatic", new object[] { value.GetIPAddressStringArray(), value.GetSubnetMaskStringArray() });

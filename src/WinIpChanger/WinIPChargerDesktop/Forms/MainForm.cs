@@ -81,7 +81,7 @@ namespace WinIPChanger.Desktop.Forms
             };
             foreach (var dns in setting.DnsServers)
                 adapter.DnsServers.Add(IPAddress.Parse(dns));
-            var result = Network.NetworkAdapterUtility.SetAdapterConfig(adapter);
+            var result = Network.NetworkAdapterUtility.SetAdapterConfig(adapter, false);
             switch (result)
             {
                 case Network.Results.Success:
