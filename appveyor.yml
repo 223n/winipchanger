@@ -12,7 +12,7 @@ assembly_info:
 # assembly_information_version: '{version}'
 
 platform:
-  - x86
+# - x86
   - Any CPU
 
 configuration:
