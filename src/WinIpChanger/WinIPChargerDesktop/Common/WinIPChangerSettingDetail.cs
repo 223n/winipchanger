@@ -48,7 +48,7 @@ namespace WinIPChanger.Desktop.Common
         /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public List<IPAddressValue> DnsServers { get; set; }
+        public List<string> DnsServers { get; set; } = new List<string>();
 
     }
 }

@@ -19,16 +19,10 @@ namespace WinIPChanger.Network
         public static uint LastApiErrorCode { get; set; } = 0;
 
         /// <summary>
-        /// すべてのIPが有効なネットワーク接続情報
-        /// </summary>
-        /// <returns>IPが有効なネットワーク接続情報の一覧</returns>
-        public static Collection<NetworkAdapter> NetworkAdaptersForIPEnabled { get { return GetNetworkAdaptersForIPEnabled(); } }
-
-        /// <summary>
         /// すべてのIPが有効なネットワーク接続情報を取得します。
         /// </summary>
         /// <returns>IPが有効なネットワーク接続情報の一覧</returns>
-        private static Collection<NetworkAdapter> GetNetworkAdaptersForIPEnabled()
+        public static Collection<NetworkAdapter> GetNetworkAdaptersForIPEnabled()
         {
             var results = new Collection<NetworkAdapter>();
             string getNetworkAdapterSql = "select * from Win32_NetworkAdapter";
@@ -49,7 +43,7 @@ namespace WinIPChanger.Network
         /// <param name="value">ネットワークアダプタの設定</param>
         /// <returns>設定結果</returns>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        private static Results SetAdapterConfig(NetworkAdapter value)
+        public static Results SetAdapterConfig(NetworkAdapter value)
         {
             if (value == null) throw new ArgumentNullException("value");
             uint apiResult = 0;

@@ -52,7 +52,7 @@ namespace WinIpChangerConsole
         {
             bool isFound = false;
 
-            foreach(var adapter in NetworkAdapterUtility.NetworkAdaptersForIPEnabled)
+            foreach(var adapter in NetworkAdapterUtility.GetNetworkAdaptersForIPEnabled())
             {
                 if (!isFound)
                 {

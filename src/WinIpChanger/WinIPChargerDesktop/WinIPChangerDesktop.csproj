@@ -72,7 +72,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\IPAddressValue.cs" />
     <Compile Include="Common\WinIPChangerSetting.cs" />
     <Compile Include="Common\WinIPChangerSettingDetail.cs" />
     <Compile Include="Common\YamlImporter.cs" />
