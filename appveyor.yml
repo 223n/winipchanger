@@ -1,0 +1,32 @@
+# AppVeyor
+#  for WinIPChanger
+
+version: '0.0.2.{build}'
+
+image: Visual Studio 2017
+
+assembly_info:
+  patch: true
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_information_version: '{version}-rc1'
+
+platform:
+  - x86
+  - Any CPU
+
+configuration:
+  - Debug
+  - Release
+
+matrix:
+  fast_finish: true
+
+install:
+  - ps: |
+      Get-CimInstance win32_operatingsystem -Property Caption, OSArchitecture, Version | fl Caption, OSArchitecture, Version;
+      $PSVersionTable;
+      git --version;
+
+test_script:
+  - ps: ls
