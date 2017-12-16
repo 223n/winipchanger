@@ -14,9 +14,14 @@ namespace WinIPChanger.Desktop.Common
         public int No { get; set; }
 
         /// <summary>
+        /// Setting Name
+        /// </summary>
+        public string SettingName { get; set; }
+
+        /// <summary>
         /// Network Adapter Name
         /// </summary>
-        public string Name { get; set; }
+        public string NetworkAdapterName { get; set; }
 
         /// <summary>
         /// DHCP Enabled

@@ -81,7 +81,7 @@ namespace WinIPChanger.Desktop.Forms
                 // Add List
                 foreach (var detail in setting.Details)
                 {
-                    var child = new ToolStripMenuItem() { Text = string.Format("{0} [IP: {1}]", detail.Name, detail.IPAddress), Tag = detail };
+                    var child = new ToolStripMenuItem() { Text = string.Format("{0} [IP: {1}]", detail.NetworkAdapterName, detail.IPAddress), Tag = detail };
                     updateConnectionInfoToolStripMenuItem.DropDownItems.Add(child);
                 }
                 updateConnectionInfoToolStripMenuItem.Enabled = updateConnectionInfoToolStripMenuItem.HasDropDown;
@@ -109,7 +109,8 @@ namespace WinIPChanger.Desktop.Forms
                 var detail = new Common.WinIPChangerSettingDetail()
                 {
                     No = setting.Details.Count + 1,
-                    Name = adapter.Name,
+                    SettingName = adapter.Name,
+                    NetworkAdapterName = adapter.Name,
                     IsDhcpEnabled = adapter.IsDhcpEnabled,
                     IPAddress = adapter.IPAddress?.ToString(),
                     SubnetMask = adapter.SubnetMask?.ToString(),

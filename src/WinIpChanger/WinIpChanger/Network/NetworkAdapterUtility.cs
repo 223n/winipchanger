@@ -104,6 +104,5 @@ namespace WinIPChanger.Network
             return apiResult == 1 ? Results.SuccessRebootRequired : Results.Success;
         }
 
-
     }
 }
