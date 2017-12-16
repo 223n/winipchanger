@@ -37,12 +37,12 @@ after_build:
       cd $binDir
       ls
       if (Test-Path -Path Debug) {
-        $debugZipName = 'WinIPChargerDesktop_{version}_Debug';
+        $debugZipName = 'WinIPChargerDesktop_$($version)_Debug';
         Rename-Item Debug $debugZipName;
         Compress-Archive -Path $debugZipName -DestinationPath '${debugZipName}.zip';
       }
       if (Test-Path -Path Release) {
-        $releaseZipName = 'WinIPChargerDesktop_{version}';
+        $releaseZipName = 'WinIPChargerDesktop_$($version)';
         Rename-Item Release $releaseZipName;
         Compress-Archive -Path $releaseZipName -DestinationPath '${debugZipName}.zip';
       }
