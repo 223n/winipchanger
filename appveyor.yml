@@ -28,5 +28,8 @@ install:
       $PSVersionTable;
       git --version;
 
+before_build:
+  - nuget restore
+
 test_script:
   - ps: ls
