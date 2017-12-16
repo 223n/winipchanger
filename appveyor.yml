@@ -29,7 +29,7 @@ install:
       git --version;
 
 before_build:
-  - nuget restore WinIPChangerDesktop.sln
+  - nuget restore src\WinIpChanger\WinIpChanger.sln
 
 test_script:
   - ps: ls
