@@ -1,0 +1,54 @@
+# AppVeyor
+#  for WinIPChanger
+
+version: '0.0.2.{build}'
+
+image: Visual Studio 2017
+
+assembly_info:
+  patch: true
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+# assembly_information_version: '{version}'
+
+platform:
+# - x86
+  - Any CPU
+
+configuration:
+  - Debug
+  - Release
+
+matrix:
+  fast_finish: true
+
+install:
+  - ps: |
+      Get-CimInstance win32_operatingsystem -Property Caption, OSArchitecture, Version | fl Caption, OSArchitecture, Version;
+      $PSVersionTable;
+      git --version;
+
+before_build:
+  - nuget restore src\WinIpChanger\WinIpChanger.sln
+
+after_build:
+  - ps: |
+      $binDir = '.\src\WinIpChanger\WinIPChargerDesktop\bin';
+      cd $binDir
+      ls
+      if (Test-Path -Path Debug) {
+        $debugZipName = "WinIPChargerDesktop_Debug";
+        Rename-Item Debug $debugZipName;
+        Compress-Archive -Path $debugZipName -DestinationPath "${debugZipName}.zip";
+      }
+      if (Test-Path -Path Release) {
+        $releaseZipName = "WinIPChargerDesktop";
+        Rename-Item Release $releaseZipName;
+        Compress-Archive -Path $releaseZipName -DestinationPath "${releaseZipName}.zip";
+      }
+
+test_script:
+  - ps: ls
+
+artifacts:
+  - path: '.\src\WinIpChanger\WinIPChargerDesktop\bin\*.zip'
